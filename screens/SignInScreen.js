@@ -79,9 +79,7 @@ export default class SignInScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-
     backgroundColor: '#fafafa',
-
   },
   signInContainer: {
     padding: 15
