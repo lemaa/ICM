@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet ,View, Text, TextInput, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ActionButton from 'react-native-action-button';
-export default class LinksScreen extends React.Component {
+export default class CustomersScreen extends React.Component {
   static navigationOptions = {
     title: 'Customers',
   };
@@ -194,7 +194,7 @@ export default class LinksScreen extends React.Component {
     );
   };
   _addUserAsync = async () => {
-    this.props.navigation.navigate('Auth');
+    this.props.navigation.navigate('NewCustomer');
  };
 }
 

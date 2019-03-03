@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import CustomersScreen from '../screens/CustomersScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
@@ -20,7 +20,7 @@ HomeStack.navigationOptions = {
 };
 
 const CustomersStack = createStackNavigator({
-  Customers: LinksScreen,
+  Customers: CustomersScreen,
 });
 
 CustomersStack.navigationOptions = {
@@ -46,6 +46,8 @@ SettingsStack.navigationOptions = {
     />
   ),
 };
+
+ 
 
 export default createBottomTabNavigator({
   HomeStack,
