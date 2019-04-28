@@ -2,34 +2,36 @@ import React from 'react';
 import { ScrollView, StyleSheet ,View, Text, TextInput, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ActionButton from 'react-native-action-button';
-export default class NewCustomerScreen extends React.Component {
+import FormCustomer from '../components/FormCustomer';
+
+export default class CustomerScreen extends React.Component {
   static navigationOptions = {
-    title: 'New Customer',
+    title: 'Customer',
   };
   constructor(props) {
-    super(props);        
+    super(props);   
+    this.customer = this.props.navigation.getParam('customer', {}); 
+    
 }   
+
     
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container}>
-        
- 
-        </ScrollView>
+            <ScrollView style={styles.container}>
+                <FormCustomer customer = {this.customer} />
+            </ScrollView>
       </View>
     );
   };
-  _addUserAsync = async () => {
-    this.props.navigation.navigate('Auth');
- };
+ 
 }
 
 const styles = StyleSheet.create({
   container: {
      flex: 1,
      paddingTop: 5,
-    // backgroundColor: '#f5f6fa',
+    
   },
   card: {
     borderWidth: 1,

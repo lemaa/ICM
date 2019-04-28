@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet ,View, Text, TextInput, TouchableHighlight } from 'react-native';
+import { ScrollView, StyleSheet ,View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ActionButton from 'react-native-action-button';
 export default class CustomersScreen extends React.Component {
@@ -13,8 +13,7 @@ export default class CustomersScreen extends React.Component {
         "_id": "5c687316f285704b130f76c0",
         "picture": "http://placehold.it/32x32",
         "age": 22,
-        "firstName": "Sears ",
-        "surname": "Johnston",
+        "name": "Johnston Sears",
         "company": "FRENEX",
         "email": "searsjohnston@frenex.com",
         "phone": "+1 (979) 501-3787",
@@ -43,8 +42,7 @@ export default class CustomersScreen extends React.Component {
         "_id": "5c687316adaee0dfecf126ec",
         "picture": "http://placehold.it/32x32",
         "age": 40,
-        "firstName": "Santana ",
-        "surname": "Preston",
+        "name": "Preston Santana",
         "company": "TALAE",
         "email": "santanapreston@talae.com",
         "phone": "+1 (982) 522-2317",
@@ -73,8 +71,7 @@ export default class CustomersScreen extends React.Component {
         "_id": "5c687316fff517dc18876c40",
         "picture": "http://placehold.it/32x32",
         "age": 21,
-        "firstName": "Calhoun ",
-        "surname": "Gates",
+        "name": "Gates Calhoun",
         "company": "AUTOMON",
         "email": "calhoungates@automon.com",
         "phone": "+1 (877) 448-3436",
@@ -103,8 +100,7 @@ export default class CustomersScreen extends React.Component {
         "_id": "5c687316c112e2e2051020fd",
         "picture": "http://placehold.it/32x32",
         "age": 29,
-        "firstName": "Gould ",
-        "surname": "Bass",
+         "name": "Bass Gould",
         "company": "ISODRIVE",
         "email": "gouldbass@isodrive.com",
         "phone": "+1 (917) 414-2176",
@@ -133,8 +129,7 @@ export default class CustomersScreen extends React.Component {
         "_id": "5c68731611158cd0a91d1dd1",
         "picture": "http://placehold.it/32x32",
         "age": 36,
-        "firstName": "Regina ",
-        "surname": "Mccall",
+        "name": "Mccall Regina",
         "company": "HAWKSTER",
         "email": "reginamccall@hawkster.com",
         "phone": "+1 (913) 502-2021",
@@ -165,37 +160,39 @@ export default class CustomersScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ActionButton style={styles.actionButton}  buttonColor="#ea4c89"  onPress={this._addUserAsync}>
-        </ActionButton>
-        <ScrollView style={styles.container}>
-        <View style={styles.searchInputSection}>
-          <Icon name="search" style={styles.searchIcon}/> 
-           <TextInput
-            style={styles.input}
-            placeholder="Search for a user"
-           />
-        </View>
-         {this.dataList.map(r => 
-           <View elevation={5}  style={styles.card} key={r._id} >
-             <View>
-               <Text style={styles.textHeaderInfo}  >
-                 {r.firstName.toUpperCase()} {r.surname.toUpperCase()}
-               </Text>
-               <Text style={styles.textInfo}>
-                 <Icon name="phone" style={styles.iconInfo} />  {r.phone} 
-                </Text>
-               <Text style={styles.textInfo}>
-               <Icon name="globe"  style={styles.iconInfo}/> {r.address}
-                 </Text>
-             </View>
-           </View>)}
-        </ScrollView>
+            <ActionButton style={styles.actionButton}  buttonColor="#ea4c89"  onPress={() => this._addViewUserAsync({})}>
+            </ActionButton>
+            <ScrollView style={styles.container}>
+                <View style={styles.searchInputSection}>
+                    <Icon name="search" style={styles.searchIcon}/> 
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Search for a user"
+                      />
+                </View>
+                {this.dataList.map(user => 
+                     <TouchableOpacity key={user._id} onPress={() => this._addViewUserAsync(user)}>
+                        <View elevation={5}  style={styles.card}  >
+                            <Text style={styles.textHeaderInfo}  >
+                                {user.name.toUpperCase()}
+                            </Text>
+                            <Text style={styles.textInfo}>
+                                <Icon name="phone" style={styles.iconInfo} />  {user.phone} 
+                            </Text>
+                            <Text style={styles.textInfo}>
+                                <Icon name="globe"  style={styles.iconInfo}/> {user.address}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>)
+                }
+            </ScrollView>
       </View>
     );
   };
-  _addUserAsync = async () => {
-    this.props.navigation.navigate('NewCustomer');
+  _addViewUserAsync = async (customer) => {
+    this.props.navigation.navigate('Customer' , {'customer': customer,});
  };
+
 }
 
 const styles = StyleSheet.create({

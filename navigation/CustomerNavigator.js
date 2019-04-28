@@ -2,12 +2,12 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import NewCustomerScreen from '../screens/NewCustomerScreen';
+import CustomerScreen from '../screens/CustomerScreen';
  
-const NewCustomerStack = createStackNavigator({
-  NewCustomer: NewCustomerScreen
+const CustomerStack = createStackNavigator({
+  Customer: CustomerScreen
 });
 
  
 
-export default NewCustomerStack ;
+export default CustomerStack ;

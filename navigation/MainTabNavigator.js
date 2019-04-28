@@ -4,6 +4,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import CustomersScreen from '../screens/CustomersScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import CustomerScreen from '../screens/CustomerScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -20,7 +21,8 @@ HomeStack.navigationOptions = {
 };
 
 const CustomersStack = createStackNavigator({
-  Customers: CustomersScreen,
+  Customers: CustomersScreen,  
+  Customer: CustomerScreen,
 });
 
 CustomersStack.navigationOptions = {

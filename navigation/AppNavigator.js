@@ -5,12 +5,12 @@ import {
 } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-import NewCustomerNavigator from './NewCustomerNavigator';
+import CustomerNavigator from './CustomerNavigator';
 import SignInNavigator from './SignInNavigator';
 
 export default createAppContainer(createSwitchNavigator({
   Main: MainTabNavigator,
-  NewCustomer: NewCustomerNavigator,
+  Customer: CustomerNavigator,
   Auth: SignInNavigator
 }, {
   initialRouteName: 'Auth',
